@@ -13,13 +13,13 @@ const crypto = require('crypto');
 const client = new Client({
   connectionString: process.env.DATABASE_URL || 'postgresql://delmundo:fB3Yq3XuVZnRfDA_9oEFAQ@phased-moth-7387.g8z.gcp-us-east1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full',
   ssl: {
-    rejectUnauthorized: false, // Adjust as necessary
+    rejectUnauthorized: false, 
   },
 });
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://delmundo:fB3Yq3XuVZnRfDA_9oEFAQ@phased-moth-7387.g8z.gcp-us-east1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full',
   ssl: {
-    rejectUnauthorized: false, // Adjust as necessary
+    rejectUnauthorized: false, 
   },
 });
 
