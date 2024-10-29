@@ -5,7 +5,7 @@ const nodemailer = require('nodemailer');
 const cron = require('node-cron');
 const app = express();
 const { Pool } = require('pg');
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const crypto = require('crypto');
 
 // @author jhonbraynrafer
@@ -326,7 +326,7 @@ app.put('/api/bookactivity/:id', async (req, res) => {
 });
 app.put('/api/bookactivity_reserve/:id', async (req, res) => {
   const { id } = req.params;
-  const { action_type, book_state, user_email } = req.body; // Include user_email in the request body
+  const { action_type, book_state, user_email,book_title } = req.body; // Include user_email in the request body
 
   try {
     // Update the reservation_status and book_state in the book_activity table
@@ -349,11 +349,11 @@ app.put('/api/bookactivity_reserve/:id', async (req, res) => {
       const mailOptions = {
         from: 'mcsaliksik@gmail.com', // sender address
         to: user_email,
-        subject: 'MC Salik-sik: Book Approval Notice',
+        subject: 'MC Salik-sik: Book Approval Notice' + book_title,
         text: `
         Dear Students,
 
-We are pleased to inform you that your book reservation has been officially approved by MC Salik-sik.
+We are pleased to inform you that your book reservation  has been officially approved by MC Salik-sik.
 
 Please note the following details:
 Status: Approved
